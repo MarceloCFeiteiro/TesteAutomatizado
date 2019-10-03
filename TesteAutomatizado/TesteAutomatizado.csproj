@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\DataTablePage.cs" />
     <Compile Include="Pages\PagesMap\FileUploaderMap.cs" />
     <Compile Include="Pages\PagesMap\NotificationMessageMap.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
@@ -77,14 +76,8 @@
     </Compile>
     <Compile Include="SeleniumUtils\SeleniumTools.cs" />
     <Compile Include="Tests\BaseTeste.cs" />
-    <Compile Include="Tests\TestNotificationMessage.cs" />
-    <Compile Include="Pages\FileUploaderPage.cs" />
-    <Compile Include="Pages\NotificationMessagePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Tests\TestDataTable.cs" />
-    <Compile Include="Tests\TesteLogin.cs" />
-    <Compile Include="Tests\TestUploadArquivo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

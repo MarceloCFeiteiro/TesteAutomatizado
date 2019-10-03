@@ -7,7 +7,7 @@ namespace TesteAutomatizado.SeleniumUtils
     public static class SeleniumTools
 
     {
-        public static WebDriverWait wait = null;
+        private static WebDriverWait wait = null;
         public static void ClicarNoTexto(IWebDriver driver, By referencia)
         {
             var elementoCarregado = Waiter(driver, referencia);
