@@ -23,7 +23,7 @@ namespace TesteAutomatizado.Testes
         public void CleanUp()
         {                     
             PegarEvidencia();
-            Console.WriteLine("Finalizando Teste");
+            Console.WriteLine("Finalizando Teste depois de salvar a imagem");
             driver.Close();
         }
 
