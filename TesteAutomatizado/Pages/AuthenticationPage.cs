@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using TesteAutomatizado.Paginas;
 
 namespace TesteAutomatizado.Testes
 {
-    public class LoginPage : BasePage
+    public class AuthenticationPage : BasePage
     {
-        public LoginPage(IWebDriver driver) : base(driver) { }
+        public AuthenticationPage(IWebDriver driver) : base(driver) { }
 
         public void PreencheCampoNome(string nome)
         {

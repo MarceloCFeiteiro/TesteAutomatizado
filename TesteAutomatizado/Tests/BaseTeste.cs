@@ -13,7 +13,7 @@ namespace TesteAutomatizado.Testes
         public void Inicializar()
         {
             ChromeOptions opt = new ChromeOptions();
-            opt.AddArgument("--headless");
+           // opt.AddArgument("--headless");
             driver = new ChromeDriver(opt);
             Console.WriteLine("Abrindo url");
         }
