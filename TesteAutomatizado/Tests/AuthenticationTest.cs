@@ -10,18 +10,23 @@ namespace TesteAutomatizado
 
         [Test]
         [Retry(2)]
-        public void LoginComUsuarioEPasswordCorretos()
+        public void LoginComUsuarioEPasswordIncorretos()
         {
             Console.WriteLine("Executando teste");
 
+            #region Act
             AuthenticationPage login = new AuthenticationPage(driver);
+            #endregion
+
+            #region Arranje
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
-            login.PreencheCampoNome("tomsmith");
+            login.PreencheCampoEmail("Email@Email.com.br");
             login.PreencheCampoPassword("SuperSecretPassword!");
-            login.Click();
+            login.ClickBtnSingin();
+            #endregion
 
             #region Assert
-            Assert.AreEqual(login.LoginEfetuadocomSucesso(), "You logged into a secure area!");
+            Assert.AreEqual(login.ValidaMensagemDeFalha(), "Authentication failed.");
             #endregion
         }
 

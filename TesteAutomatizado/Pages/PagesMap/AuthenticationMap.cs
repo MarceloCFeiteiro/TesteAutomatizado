@@ -16,5 +16,9 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o botão Sign in</summary>
         public readonly By BtnSignIn = By.Id("SubmitLogin");
 
+        /// <summary>Define o a campo de Alerta</summary>
+        public readonly By Alerta = By.CssSelector(".alert > ol > li");
+
+
     }
 }

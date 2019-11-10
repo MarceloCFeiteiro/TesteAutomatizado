@@ -19,10 +19,5 @@ namespace TesteAutomatizado.Paginas
             driver.Navigate().GoToUrl(url);
         }
 
-        public void PegarEvidencia()
-        {
-            Screenshot imagem = ((ITakesScreenshot)driver).GetScreenshot();
-            imagem.SaveAsFile("C:/Screenshot.png", ScreenshotImageFormat.Png);
-        }
     }
 }

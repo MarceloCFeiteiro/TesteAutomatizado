@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.IO;
 
 namespace TesteAutomatizado.Testes
 {
@@ -20,9 +21,26 @@ namespace TesteAutomatizado.Testes
 
         [TearDown]
         public void CleanUp()
-        {            
-            driver.Close();
+        {                     
+            PegarEvidencia();
             Console.WriteLine("Finalizando Teste");
+            driver.Close();
+        }
+
+
+        public void PegarEvidencia()
+        {
+            string pastaParaSalvar = @"C:\imagens";
+
+
+            Screenshot imagem = ((ITakesScreenshot)driver).GetScreenshot();
+
+            if (!Directory.Exists(pastaParaSalvar))
+            {
+                Directory.CreateDirectory(pastaParaSalvar);
+            }
+
+            imagem.SaveAsFile(@"C:\imagens\Screenshot.png", ScreenshotImageFormat.Png);
         }
 
     }

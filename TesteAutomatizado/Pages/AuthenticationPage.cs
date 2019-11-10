@@ -1,34 +1,39 @@
 ﻿using OpenQA.Selenium;
+using TesteAutomatizado.Pages.PagesMap;
 using TesteAutomatizado.Paginas;
 
 namespace TesteAutomatizado.Testes
 {
     public class AuthenticationPage : BasePage
     {
+        private readonly AuthenticationMap authenticationMap = new AuthenticationMap();
+
         public AuthenticationPage(IWebDriver driver) : base(driver) { }
 
-        public void PreencheCampoNome(string nome)
+        public void PreencheCampoEmail(string nome)
         {
-            IWebElement Username = driver.FindElement(By.Id("username"));
+            IWebElement Username = driver.FindElement(authenticationMap.InputEmail);
             Username.SendKeys(nome);
         }
 
+
         public void PreencheCampoPassword(string password)
         {
-            IWebElement Password = driver.FindElement(By.Id("password"));
+            IWebElement Password = driver.FindElement(authenticationMap.InputPassword);
             Password.SendKeys(password);
         }
 
-        public void Click()
+        public void ClickBtnSingin()
         {
-            IWebElement btnLogin = driver.FindElement(By.ClassName("radius"));
+            IWebElement btnLogin = driver.FindElement(authenticationMap.BtnSignIn);
             btnLogin.Click();
         }
 
-        public string LoginEfetuadocomSucesso()
+        public string ValidaMensagemDeFalha()
         {
-            IWebElement texto = driver.FindElement(By.Id("flash"));
-            return FormatString(texto.Text);
+            IWebElement texto = driver.FindElement(authenticationMap.Alerta);
+            return texto.Text;
+           // return FormatString(texto.Text);
         }
 
         private string FormatString(string text)
