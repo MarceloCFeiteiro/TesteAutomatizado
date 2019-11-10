@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Drawing.Imaging;
 
 namespace TesteAutomatizado.Paginas
 {
@@ -17,8 +15,8 @@ namespace TesteAutomatizado.Paginas
         public void NavegaParaPagina(string url)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            driver.Navigate().GoToUrl(url);
             driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl(url);
         }
 
         public void PegarEvidencia()

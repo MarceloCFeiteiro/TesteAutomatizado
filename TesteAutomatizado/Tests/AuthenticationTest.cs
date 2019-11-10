@@ -15,7 +15,7 @@ namespace TesteAutomatizado
             Console.WriteLine("Executando teste");
 
             AuthenticationPage login = new AuthenticationPage(driver);
-            login.NavegaParaPagina(Properties.Resource.URL);
+            login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoNome("tomsmith");
             login.PreencheCampoPassword("SuperSecretPassword!");
             login.Click();

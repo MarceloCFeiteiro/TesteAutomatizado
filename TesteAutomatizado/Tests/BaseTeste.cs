@@ -21,7 +21,6 @@ namespace TesteAutomatizado.Testes
         [TearDown]
         public void CleanUp()
         {            
-       
             driver.Close();
             Console.WriteLine("Finalizando Teste");
         }

@@ -117,7 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="URL" xml:space="preserve">
+  <data name="UrlAuthentication" xml:space="preserve">
+    <value>http://automationpractice.com/index.php?controller=authentication&amp;back=my-account</value>
+    <comment>Url de autenticação.</comment>
+  </data>
+  <data name="UrlPrincipal" xml:space="preserve">
     <value>http://automationpractice.com/index.php</value>
     <comment>Url do site que será testado.</comment>
   </data>

@@ -61,11 +61,20 @@ namespace TesteAutomatizado.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a http://automationpractice.com/index.php?controller=authentication&amp;back=my-account.
+        /// </summary>
+        public static string UrlAuthentication {
+            get {
+                return ResourceManager.GetString("UrlAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a http://automationpractice.com/index.php.
         /// </summary>
-        public static string URL {
+        public static string UrlPrincipal {
             get {
-                return ResourceManager.GetString("URL", resourceCulture);
+                return ResourceManager.GetString("UrlPrincipal", resourceCulture);
             }
         }
     }
