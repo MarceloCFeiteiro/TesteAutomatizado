@@ -24,6 +24,7 @@ namespace TesteAutomatizado.Testes
         {                     
             PegarEvidencia();
             Console.WriteLine("Finalizando Teste depois de salvar a imagem");
+            Console.WriteLine("teste de merge");
             driver.Close();
         }
 
