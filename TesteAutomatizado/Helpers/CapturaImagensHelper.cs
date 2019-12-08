@@ -4,7 +4,7 @@ using System.IO;
 
 namespace TesteAutomatizado.Helpers
 {
-    public static class CapturaImagensHelpers
+    public static class CapturaImagensHelper
     {
         public static string Capture(IWebDriver driver, string screenShotName)
         {

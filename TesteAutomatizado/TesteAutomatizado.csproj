@@ -109,7 +109,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\CapturaImagensHelpers.cs" />
+    <Compile Include="Helpers\CapturaImagensHelper.cs" />
+    <Compile Include="Helpers\CriaRelatorioHelper.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\PagesMap\AuthenticationMap.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
