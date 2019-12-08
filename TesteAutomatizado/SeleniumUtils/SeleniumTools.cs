@@ -8,7 +8,6 @@ namespace TesteAutomatizado.SeleniumUtils
     /// Classe responsável por armazenar os métodos de comunicação com oa elemenos da página
     /// </summary>
     public static class SeleniumTools
-
     {
         private static WebDriverWait espera = null;
 
