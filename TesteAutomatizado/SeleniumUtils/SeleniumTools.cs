@@ -71,5 +71,6 @@ namespace TesteAutomatizado.SeleniumUtils
             var elemento = driver.FindElement(referencia);
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
         }
+
     }
 }
