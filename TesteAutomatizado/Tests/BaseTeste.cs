@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.IO;
+using TesteAutomatizado.Helpers;
 
 namespace TesteAutomatizado.Testes
 {
@@ -10,38 +9,34 @@ namespace TesteAutomatizado.Testes
     {
         public IWebDriver driver;
 
+        [OneTimeSetUp]
+        public void InicializaClasse()
+        {
+            CriaRelatorioHelper.CriaRelatorio(this.GetType().Name);
+
+            ChromeOptions opt = new ChromeOptions();
+            opt.AddArgument("--headless");
+            driver = new ChromeDriver(opt);
+        }
+
         [SetUp]
         public void Inicializar()
         {
-            ChromeOptions opt = new ChromeOptions();
-           // opt.AddArgument("--headless");
-            driver = new ChromeDriver(opt);
-            Console.WriteLine("Abrindo url");
+            CriaRelatorioHelper.CriaTeste();
         }
 
         [TearDown]
-        public void CleanUp()
-        {                     
-            PegarEvidencia();
-            Console.WriteLine("Finalizando Teste depois de salvar a imagem");
-            driver.Close();
-        }
-
-
-        public void PegarEvidencia()
+        public void Finalizar()
         {
-            string pastaParaSalvar = @"C:\imagens";
-
-
-            Screenshot imagem = ((ITakesScreenshot)driver).GetScreenshot();
-
-            if (!Directory.Exists(pastaParaSalvar))
-            {
-                Directory.CreateDirectory(pastaParaSalvar);
-            }
-
-            imagem.SaveAsFile(@"C:\imagens\Screenshot.png", ScreenshotImageFormat.Png);
+            CriaRelatorioHelper.FinalizaRelatorio(driver);
+            driver.FindElement(By.CssSelector("div#header_logo>a>img")).Click();
         }
 
+        [OneTimeTearDown]
+        public void FinalizaClasse()
+        {
+            CriaRelatorioHelper.GravaNoArquivo();
+            driver.Quit();
+        }
     }
 }

@@ -8,7 +8,6 @@ namespace TesteAutomatizado.SeleniumUtils
     /// Classe responsável por armazenar os métodos de comunicação com oa elemenos da página
     /// </summary>
     public static class SeleniumTools
-
     {
         private static WebDriverWait espera = null;
 
@@ -36,6 +35,18 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
+        /// Método responsável por retornar o texto de um elemento.
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="referencia"></param>
+        /// <returns></returns>
+        public static string RetornaTexto(IWebDriver driver, By referencia)
+        {
+            var elementoCarregado = EsperaElementoExistir(driver, referencia);
+            return elementoCarregado.Text;
+        }
+
+        /// <summary>
         /// Método responsável por esperar elemento ficar clicavél.
         /// </summary>
         /// <param name="driver"></param>
@@ -47,5 +58,19 @@ namespace TesteAutomatizado.SeleniumUtils
             var elemento = driver.FindElement(referencia);
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(elemento));
         }
+
+        /// <summary>
+        /// Método responsávelpor esperar um elemento existir na página.
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="referencia"></param>
+        /// <returns></returns>
+      private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
+        {
+            espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var elemento = driver.FindElement(referencia);
+            return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
+        }
+
     }
 }
