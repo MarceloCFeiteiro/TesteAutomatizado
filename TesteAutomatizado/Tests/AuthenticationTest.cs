@@ -21,11 +21,11 @@ namespace TesteAutomatizado
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmail("Email@Email.com.br");
             login.PreencheCampoPassword("SuperSecretPassword!");
-            login.ClickBtnSingin();
+            login.ClickBtnSign_in();
             #endregion
 
             #region Assert
-            Assert.AreEqual(login.ValidaMensagemDeFalha(), "Authentication failed.");
+            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failed.");
             #endregion
         }
 
@@ -43,11 +43,11 @@ namespace TesteAutomatizado
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmail("Email@Email.com.br");
             login.PreencheCampoPassword("SuperSecretPassword!");
-            login.ClickBtnSingin();
+            login.ClickBtnSign_in();
             #endregion
 
             #region Assert
-            Assert.AreEqual(login.ValidaMensagemDeFalha(), "Authentication failedef.");
+            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.");
             #endregion
         }
 
