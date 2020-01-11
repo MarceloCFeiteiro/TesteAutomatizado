@@ -19,13 +19,13 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Construtor da classe.
         /// </summary>
-        /// <param name="driver"></param>
+        /// <param name="driver">Driver atual.</param>
         public AuthenticationPage(IWebDriver driver) : base(driver) { }
 
         /// <summary>
         /// Método responsável por preencher o campo email.
         /// </summary>
-        /// <param name="nome"></param>
+        /// <param name="nome">Nome a ser preenchido</param>
         public void PreencheCampoEmail(string nome)
         {
             SeleniumTools.EnviarTexto(driver, authenticationMap.InputEmail, nome);
@@ -34,7 +34,7 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Método responsável por preencher o Password
         /// </summary>
-        /// <param name="password"></param>
+        /// <param name="password">Senha a ser preenchida.</param>
         public void PreencheCampoPassword(string password)
         {
             SeleniumTools.EnviarTexto(driver, authenticationMap.InputPassword, password);
@@ -51,7 +51,7 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Método responsável o texto da mensagem.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna a mensagem contida no alerta.</returns>
         public string RetornaTextoDaMensagem()
         {
             return SeleniumTools.RetornaTexto(driver, authenticationMap.Alerta);
@@ -61,8 +61,8 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Método responsavél por formatar um texto.
         /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+        /// <param name="text">Texto a ser formatado.</param>
+        /// <returns>Retorna um texto formatado.</returns>
         private string FormatString(string text)
         {
             return text.Replace("\r", "").Replace("\n", "").Replace("×", "");

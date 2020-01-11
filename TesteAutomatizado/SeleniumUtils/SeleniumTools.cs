@@ -5,7 +5,7 @@ using System;
 namespace TesteAutomatizado.SeleniumUtils
 {
     /// <summary>
-    /// Classe responsável por armazenar os métodos de comunicação com oa elemenos da página
+    /// Classe responsável por armazenar os métodos de comunicação com oa elemenos da página.
     /// </summary>
     public static class SeleniumTools
     {
@@ -14,8 +14,8 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <summary>
         /// Método responsável por clicar em um elemento.
         /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="referencia"></param>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento a ser clicado.</param>
         public static void Clicar(IWebDriver driver, By referencia)
         {
             var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
@@ -25,9 +25,9 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <summary>
         /// Método responsável por enviar um texto para o elemento.
         /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="referencia"></param>
-        /// <param name="texto"></param>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento para onde o texto será enviado.</param>
+        /// <param name="texto">Texto a ser inserido.</param>
         public static void EnviarTexto(IWebDriver driver, By referencia, string texto)
         {
             var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
@@ -37,9 +37,9 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <summary>
         /// Método responsável por retornar o texto de um elemento.
         /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="referencia"></param>
-        /// <returns></returns>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento</param>
+        /// <returns>Retorna o texto contido no atributo Text do elemento.</returns>
         public static string RetornaTexto(IWebDriver driver, By referencia)
         {
             var elementoCarregado = EsperaElementoExistir(driver, referencia);
@@ -47,11 +47,11 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
-        /// Método responsável por esperar elemento ficar clicavél.
+        /// Método responsável por esperar elemento ficar clicável.
         /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="referencia"></param>
-        /// <returns></returns>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento.</param>
+        /// <returns>Retorna um elemento que pode ser clicado.</returns>
         private static IWebElement EsperaElementoFicarClicavel(IWebDriver driver, By referencia)
         {
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -62,15 +62,14 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <summary>
         /// Método responsávelpor esperar um elemento existir na página.
         /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="referencia"></param>
-        /// <returns></returns>
-      private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
+        /// <param name="driver">Diver atual.</param>
+        /// <param name="referencia">Referência do elemento.</param>
+        /// <returns>Retorna um elemento que já existe na página.</returns>
+        private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
         {
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             var elemento = driver.FindElement(referencia);
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
         }
-
     }
 }
