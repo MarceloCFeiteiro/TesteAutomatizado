@@ -1,0 +1,36 @@
+﻿using OpenQA.Selenium;
+using TesteAutomatizado.Pages.PagesMap;
+using TesteAutomatizado.Paginas;
+using TesteAutomatizado.SeleniumUtils;
+
+namespace TesteAutomatizado.Pages
+{
+    /// <summary>
+    /// Classe responsável por armazenar os métodos da pagina My account.
+    /// </summary>
+    public class MyAccountPage : BasePage
+    {
+        /// <summary>
+        /// Atributo responsável por armazenar uma referência para a classe MyAccountMap.
+        /// </summary>
+        private readonly MyAccountMap myAccountMap = new MyAccountMap();
+
+        /// <summary>
+        /// Construtor da classe.
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        public MyAccountPage(IWebDriver driver) : base(driver)
+        {
+        }
+
+        /// <summary>
+        /// Método responsável por retornar o texto da mensagem.
+        /// </summary>
+        /// <returns>Retorna a mensagem contida no alerta.</returns>
+        public string RetornaTextoDaMensagem()
+        {
+            return SeleniumTools.RetornaTexto(driver, myAccountMap.TextMyAccount);
+        }
+
+    }
+}
