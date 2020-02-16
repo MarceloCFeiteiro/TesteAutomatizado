@@ -32,7 +32,6 @@ namespace TesteAutomatizado.Testes
         public void Finalizar()
         {
             CriaRelatorioHelper.FinalizaRelatorio(driver);
-            driver.FindElement(By.CssSelector("div#header_logo>a>img")).Click();
         }
 
         [OneTimeTearDown]

@@ -1,11 +1,12 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace TesteAutomatizado.SeleniumUtils
 {
     /// <summary>
-    /// Classe responsável por armazenar os métodos de comunicação com oa elemenos da página.
+    /// Classe responsável por armazenar os métodos de comunicação com os elemenos da página.
     /// </summary>
     public static class SeleniumTools
     {
@@ -23,6 +24,18 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
+        /// Método responsável por clicar em um elemento através de um action.
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento a ser clicado.</param>
+        public static void ClicarAction(IWebDriver driver, By referencia)
+        {
+            var action = CriarAction(driver);
+            var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+            action.Click(elementoCarregado);
+        }
+
+        /// <summary>
         /// Método responsável por enviar um texto para o elemento.
         /// </summary>
         /// <param name="driver">Driver atual.</param>
@@ -32,6 +45,19 @@ namespace TesteAutomatizado.SeleniumUtils
         {
             var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
             elementoCarregado.SendKeys(texto);
+        }
+
+        /// <summary>
+        /// Método responsável por enviar um texto para o elemento através de um action.
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento para onde o texto será enviado.</param>
+        /// <param name="texto">Texto a ser inserido.</param>
+        public static void EnviarTextoAction(IWebDriver driver, By referencia, string texto)
+        {
+            var action = CriarAction(driver);
+            var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+            action.SendKeys(elementoCarregado, texto);
         }
 
         /// <summary>
@@ -70,6 +96,16 @@ namespace TesteAutomatizado.SeleniumUtils
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             var elemento = driver.FindElement(referencia);
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
+        }
+
+        /// <summary>
+        /// Método responsável por criar uma nova Action
+        /// </summary>
+        /// <param name="driver">Driver atual</param>
+        /// <returns>Retorna uma nova Actions</returns>
+        private static Actions CriarAction(IWebDriver driver)
+        {
+            return new Actions(driver);
         }
     }
 }

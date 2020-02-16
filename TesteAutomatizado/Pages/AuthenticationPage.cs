@@ -6,7 +6,7 @@ using TesteAutomatizado.SeleniumUtils;
 namespace TesteAutomatizado.Testes
 {
     /// <summary>
-    /// Classe responsável por armazenar os métodos da pagina de login
+    /// Classe responsável por armazenar os métodos da pagina de login.
     /// </summary>
     public class AuthenticationPage : BasePage
     {
@@ -49,7 +49,7 @@ namespace TesteAutomatizado.Testes
         }
 
         /// <summary>
-        /// Método responsável o texto da mensagem.
+        /// Método responsável por retornar texto da mensagem.
         /// </summary>
         /// <returns>Retorna a mensagem contida no alerta.</returns>
         public string RetornaTextoDaMensagem()

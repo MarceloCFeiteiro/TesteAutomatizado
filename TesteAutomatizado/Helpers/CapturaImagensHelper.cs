@@ -9,6 +9,9 @@ namespace TesteAutomatizado.Helpers
     /// </summary>
     public static class CapturaImagensHelper
     {
+        private static readonly string dir = "C:";
+        private static readonly string nomePasta = "\\Imagens_capturadas\\";
+
         /// <summary>
         /// Método responsável por captturar um print da tela atual.
         /// </summary>
@@ -21,15 +24,14 @@ namespace TesteAutomatizado.Helpers
             try
             {
                 Screenshot screenshot = Captura(driver);
-                var dir = "C:";
-                DirectoryInfo di = Directory.CreateDirectory(dir + "\\Imagens_capturadas\\" + DateTime.Now.ToString("MM-yy"));
+                DirectoryInfo di = Directory.CreateDirectory(dir + nomePasta + DateTime.Now.ToString("MM-yy"));
                 string finalpth = di.FullName + "\\" + screenShotName + DateTime.Now.ToString("hh-mm-ss") + ".png";
                 localpath = new Uri(finalpth).LocalPath;
                 screenshot.SaveAsFile(localpath);
             }
             catch (Exception e)
             {
-                throw (e);
+                throw new Exception("Não foi possível salvar a imagem" + e.Message);
             }
             return localpath;
         }
@@ -41,7 +43,7 @@ namespace TesteAutomatizado.Helpers
         /// <returns>Retorna uma instancia da captura da tela</returns>
         private static Screenshot Captura(IWebDriver driver)
         {
-            ITakesScreenshot ts = (ITakesScreenshot)driver;
+            ITakesScreenshot ts = driver as ITakesScreenshot;
             Screenshot screenshot = ts.GetScreenshot();
             return screenshot;
         }

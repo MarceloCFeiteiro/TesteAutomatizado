@@ -15,6 +15,9 @@ namespace TesteAutomatizado.Helpers
     {
         private static ExtentReports _extent;
         private static ExtentTest _test;
+        private static readonly string dir = "C:";
+        private static readonly string nomeDaPasta = "\\Reporte_De_Testes\\";
+        private static readonly string nomeReport = "\\Autorização.html";
 
         /// <summary>
         /// Método responsável por criar o relatório.
@@ -25,9 +28,8 @@ namespace TesteAutomatizado.Helpers
             try
             {
                 _extent = new ExtentReports();
-                var dir = "C:";
-                DirectoryInfo di = Directory.CreateDirectory(dir + "\\Reporte_De_Testes\\" + DateTime.Now.ToString("MM-yy") + "\\" + nomeSuite);
-                var htmlReport = new ExtentHtmlReporter(di.FullName + "\\Autorização" + ".html");
+                DirectoryInfo di = Directory.CreateDirectory(dir + nomeDaPasta + DateTime.Now.ToString("MM-yy") + "\\" + nomeSuite);
+                var htmlReport = new ExtentHtmlReporter(di.FullName + nomeReport);
                 htmlReport.Config.EnableTimeline = false;
                 _extent.AddSystemInfo(".NET C#", "Projeto de teste automatizado");
                 _extent.AddSystemInfo("Usuário", "Marcelo");
