@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
 
 
@@ -9,10 +10,35 @@ namespace TesteAutomatizado
     {
         [Test]
         [Retry(2)]
+        public void LoginComUsuarioEPasswordCorretos()
+        {
+            #region Arranje
+            IndexPage index = new IndexPage(driver);
+            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            AuthenticationPage login = new AuthenticationPage(driver);
+            #endregion
+
+            #region Act
+            index.NavegaParaPagina(Properties.Resource.UrlPrincipal);
+            index.ClickBtnSign_in();
+            login.PreencheCampoEmail("automatizado@test.com.br");
+            login.PreencheCampoPassword("aaa123");
+            login.ClickBtnSign_in();
+            #endregion
+
+            #region Assert
+            Assert.AreEqual(myAccountPage.RetornaTextoDaMensagem(), "MY ACCOUNT");
+            #endregion
+
+            #region Finalization
+            index.ClickBtnSign_Out();
+            #endregion
+        }
+
+        [Test]
+        [Retry(2)]
         public void LoginComUsuarioEPasswordIncorretos()
         {
-            Console.WriteLine("Executando teste");
-
             #region Arranje
             AuthenticationPage login = new AuthenticationPage(driver);
             #endregion
@@ -33,8 +59,6 @@ namespace TesteAutomatizado
         [Retry(1)]
         public void LoginComUsuarioEPasswordIncorretosFail()
         {
-            Console.WriteLine("Executando teste");
-
             #region Arranje
             AuthenticationPage login = new AuthenticationPage(driver);
             #endregion

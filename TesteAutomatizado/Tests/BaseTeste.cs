@@ -5,6 +5,9 @@ using TesteAutomatizado.Helpers;
 
 namespace TesteAutomatizado.Testes
 {
+    /// <summary>
+    /// Classe base para todos os teste.
+    /// </summary>
     public class BaseTeste
     {
         public IWebDriver driver;
@@ -29,13 +32,12 @@ namespace TesteAutomatizado.Testes
         public void Finalizar()
         {
             CriaRelatorioHelper.FinalizaRelatorio(driver);
-            driver.FindElement(By.CssSelector("div#header_logo>a>img")).Click();
         }
 
         [OneTimeTearDown]
         public void FinalizaClasse()
         {
-            CriaRelatorioHelper.GravaNoArquivo();
+            CriaRelatorioHelper.GravaNoRelatorio();
             driver.Quit();
         }
     }

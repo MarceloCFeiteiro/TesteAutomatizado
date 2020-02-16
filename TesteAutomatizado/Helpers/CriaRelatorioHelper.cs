@@ -8,30 +8,43 @@ using System.IO;
 
 namespace TesteAutomatizado.Helpers
 {
+    /// <summary>
+    /// Classe responsável por gerênciar a criação e o salvamento do relatóio de teste.
+    /// </summary>
     public static class CriaRelatorioHelper
     {
-        public static ExtentReports _extent;
-        public static ExtentTest _test;
+        private static ExtentReports _extent;
+        private static ExtentTest _test;
+        private static readonly string dir = "C:";
+        private static readonly string nomeDaPasta = "\\Reporte_De_Testes\\";
+        private static readonly string nomeReport = "\\Autorização.html";
 
-        public static  void CriaRelatorio(string nomeSuite)
+        /// <summary>
+        /// Método responsável por criar o relatório.
+        /// </summary>
+        /// <param name="nomeSuite">Nome da suíte de teste que nomeára a pasta onde o report será salvo.</param>
+        public static void CriaRelatorio(string nomeSuite)
         {
             try
             {
                 _extent = new ExtentReports();
-                var dir = "C:";
-                DirectoryInfo di = Directory.CreateDirectory(dir + "\\Test_Execution_Reports\\" + DateTime.Now.ToString("MM-yy") + "\\" + nomeSuite);
-                var htmlReport = new ExtentHtmlReporter(di.FullName + "\\Autorização" + ".html");
+                DirectoryInfo di = Directory.CreateDirectory(dir + nomeDaPasta + DateTime.Now.ToString("MM-yy") + "\\" + nomeSuite);
+                var htmlReport = new ExtentHtmlReporter(di.FullName + nomeReport);
                 htmlReport.Config.EnableTimeline = false;
                 _extent.AddSystemInfo(".NET C#", "Projeto de teste automatizado");
                 _extent.AddSystemInfo("Usuário", "Marcelo");
                 _extent.AttachReporter(htmlReport);
             }
-            catch(Exception )
+            catch (Exception)
             {
                 throw new Exception($"Não foi possível criar o relatorio da suite {nomeSuite}");
             }
         }
 
+        /// <summary>
+        /// Método responsável por finalizar o relatório de teste.
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
         public static void FinalizaRelatorio(IWebDriver driver)
         {
             try
@@ -44,7 +57,7 @@ namespace TesteAutomatizado.Helpers
                 {
                     case TestStatus.Failed:
                         logstatus = Status.Fail;
-                        string screenShotPath = CapturaImagensHelper.Capture(driver, TestContext.CurrentContext.Test.Name);
+                        string screenShotPath = CapturaImagensHelper.CapturaPrintTela(driver, TestContext.CurrentContext.Test.Name);
                         _test.Log(logstatus, "Test ended with " + logstatus + " – " + errorMessage);
                         _test.Log(logstatus, "Snapshot below: " + _test.AddScreenCaptureFromPath(screenShotPath));
                         break;
@@ -60,16 +73,22 @@ namespace TesteAutomatizado.Helpers
             }
             catch (Exception)
             {
-                throw new Exception("Não foi possível finalizar o relatótio");
+                throw new Exception("Não foi possível finalizar o relatório");
             }
         }
 
+        /// <summary>
+        /// Método responsável por criar o text context.
+        /// </summary>
         public static void CriaTeste()
         {
             _test = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
         }
 
-        public static void GravaNoArquivo()
+        /// <summary>
+        /// Método responsável por gravar no arquivo do relatório.
+        /// </summary>
+        public static void GravaNoRelatorio()
         {
             try
             {
