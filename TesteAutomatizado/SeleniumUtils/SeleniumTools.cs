@@ -81,8 +81,7 @@ namespace TesteAutomatizado.SeleniumUtils
         private static IWebElement EsperaElementoFicarClicavel(IWebDriver driver, By referencia)
         {
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            var elemento = driver.FindElement(referencia);
-            return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(elemento));
+            return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(referencia));
         }
 
         /// <summary>
@@ -94,7 +93,6 @@ namespace TesteAutomatizado.SeleniumUtils
         private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
         {
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            var elemento = driver.FindElement(referencia);
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
         }
 
