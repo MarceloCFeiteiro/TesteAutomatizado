@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
-using System;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
-
+using Faker.Extensions;
 
 namespace TesteAutomatizado
 {
@@ -33,6 +32,12 @@ namespace TesteAutomatizado
             #region Finalization
             index.ClickBtnSign_Out();
             #endregion
+
+
+            Faker.Name.FullName
+            
+
+
         }
 
         [Test]
@@ -71,7 +76,7 @@ namespace TesteAutomatizado
             #endregion
 
             #region Assert
-            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.");
+            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.", "Mensagem com erro para simular uma falha");
             #endregion
         }
 
