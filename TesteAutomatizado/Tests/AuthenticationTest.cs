@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
+using TesteAutomatizado.Helpers;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
 
@@ -71,6 +73,40 @@ namespace TesteAutomatizado
 
             #region Assert
             Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.", "Mensagem com erro para simular uma falha");
+            #endregion
+        }
+
+        [Test]
+        [Retry(2)]
+        public void ValidarMensagemNaoInformacaoDosCamposDeCadastro()
+        {
+            #region Arranje
+            AuthenticationPage login = new AuthenticationPage(driver);
+            var usuario = GeneratorHelper.GerarUsuario();
+            var listaErros = new List<string> { "You must register at least one phone number.",
+                                                "lastname is required.",
+                                                "firstname is required.",
+                                                "passwd is required.",
+                                                "address1 is required.",
+                                                "city is required.",
+                                                "The Zip/Postal code you've entered is invalid. It must follow this format: 00000",
+                                                "This country requires you to choose a State."};
+            #endregion
+
+            #region Act
+            login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
+            login.PreencheCampoEmailCreateAccount(usuario.Email);
+            login.ClickBtnCreateAccount();
+            login.ClickBtnRegisterAnAccount();
+            #endregion
+
+            #region Assert
+            Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
+            var listaErrosPagina = login.RetornaListadeErros();
+            for (int i = 0; i < listaErros.Count; i++)
+            {
+                listaErros[i].Equals(listaErrosPagina[i]);
+            }
             #endregion
         }
 

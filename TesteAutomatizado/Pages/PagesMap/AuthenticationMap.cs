@@ -9,6 +9,7 @@ namespace TesteAutomatizado.Pages.PagesMap
     {
         #region AUTHENTICATION
 
+        #region ALREADY REGISTERED?
         /// <summary>Define o campo Email.</summary>
         public readonly By TxtEmail = By.Id("email");
 
@@ -18,11 +19,23 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o botão Sign in.</summary>
         public readonly By BtnSignIn = By.Id("SubmitLogin");
 
+        /// <summary>Define o campo de recuperação de senha.</summary>
+        public readonly By LinkForgotPassword = By.LinkText("Recover your forgotten password");
+
+        #endregion
+
+        #region CREATE AN ACCOUNT
+
         /// <summary>Define o campo de Alerta.</summary>
         public readonly By Alert = By.CssSelector(".alert > ol > li");
 
-        /// <summary>Define o campo de recuperação de senha.</summary>
-        public readonly By LinkForgotPassword = By.LinkText("Recover your forgotten password");
+        /// <summary>Define o campo email da create account.</summary>
+        public readonly By TxtEmailCreateAccount = By.Id("email_create");
+
+        /// <summary>Define o botão create an account.</summary>
+        public readonly By BtnCreateAnAccount = By.Id("SubmitCreate");
+
+        #endregion
 
         #endregion
 
@@ -94,6 +107,13 @@ namespace TesteAutomatizado.Pages.PagesMap
         public readonly By TxtAddressFutureReference = By.Id("alias");
 
         #endregion
+
+        /// <summary>Define o botão register.</summary>
+        public readonly By BtnRegister = By.Id("submitAccount");
+
+        /// <summary>Define o a mesagem de campo requirido.</summary>
+        public readonly By MsnRequiredFild = By.ClassName("pull-right");
+
         #endregion
     }
 }
