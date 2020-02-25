@@ -87,6 +87,11 @@ namespace TesteAutomatizado.Data
         /// </summary>
         public string CelularComDDD { get; set; }
 
+        /// <summary>
+        /// Obtém ou define EndercoAlternativo.
+        /// </summary>
+        public string EndercoAlternativo { get; set; }
+
 
         /// <summary>
         /// Método responsável por criar um usuario para uso no sistema.
@@ -94,25 +99,26 @@ namespace TesteAutomatizado.Data
         /// <returns></returns>
         public User UsuarioPadrao()
         {
+            var usuario = new User();
 
-            return new User
-            {
-                Sexo = Faker.Boolean.Random() ? 'F' : 'M',
-                PrimeiroNome = Faker.Name.First(),
-                UltimoNome = Faker.Name.Last(),
-                Password = "aaa123",
-                Email = Faker.Internet.Email(this.PrimeiroNome),
-                DataAniversario = DateTime.Now.AddYears(-20),
-                Empresa = Faker.Company.Name(),
-                EmpresaEndereco = Faker.Address.StreetAddress(),
-                Cidade = Faker.Address.City(),
-                Estado = Faker.Address.UsState(),
-                Cep = Faker.Address.ZipCode(),
-                Pais = "United States",
-                InformacaoAdicional = Faker.Lorem.Paragraph(),
-                TelefoneComDDD = Faker.Phone.Number(),
-                CelularComDDD = Faker.Phone.Number(),
-            };
+            usuario.Sexo = Faker.Boolean.Random() ? 'F' : 'M';
+            usuario.PrimeiroNome = Faker.Name.First();
+            usuario.UltimoNome = Faker.Name.Last();
+            usuario.Password = "aaa123";
+            usuario.Email = Faker.Internet.Email(usuario.PrimeiroNome);
+            usuario.DataAniversario = DateTime.Now.AddYears(-20);
+            usuario.Empresa = Faker.Company.Name();
+            usuario.EmpresaEndereco = Faker.Address.StreetAddress();
+            usuario.Cidade = Faker.Address.City();
+            usuario.Estado = Faker.Address.UsState();
+            usuario.Cep = Faker.Address.ZipCode();
+            usuario.Pais = "United States";
+            usuario.InformacaoAdicional = Faker.Lorem.Paragraph();
+            usuario.TelefoneComDDD = Faker.Phone.Number();
+            usuario.CelularComDDD = Faker.Phone.Number();
+            usuario.EndercoAlternativo = Faker.Address.StreetAddress();
+
+            return usuario;
         }
     }
 }

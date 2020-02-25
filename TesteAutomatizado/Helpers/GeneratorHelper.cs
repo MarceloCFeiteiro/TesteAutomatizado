@@ -3,7 +3,7 @@
 namespace TesteAutomatizado.Helpers
 {
     /// <summary>
-    /// Classe responsável por gerênciar a criação de daados para uso no sistema.
+    /// Classe responsável por gerênciar a criação de dados para uso no sistema.
     /// </summary>
     public static class GeneratorHelper
     {
