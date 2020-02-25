@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
-using Faker.Extensions;
 
 namespace TesteAutomatizado
 {
@@ -32,11 +31,6 @@ namespace TesteAutomatizado
             #region Finalization
             index.ClickBtnSign_Out();
             #endregion
-
-
-            Faker.Name.FullName
-            
-
 
         }
 

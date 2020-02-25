@@ -73,6 +73,19 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
+        /// Método responsável por selecinar um valor na combo.
+        /// </summary>
+        /// <param name="driver">Driver atual</param>
+        /// <param name="referencia">Referência do elemento</param>
+        /// <param name="valor">Valor a ser selecionado</param>
+        public static void SelecionarValorCombo(IWebDriver driver, By referencia, string valor)
+        {
+            var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+            var seletor = new SelectElement(elementoCarregado);
+            seletor.SelectByValue(valor);
+        }
+
+        /// <summary>
         /// Método responsável por esperar elemento ficar clicável.
         /// </summary>
         /// <param name="driver">Driver atual.</param>

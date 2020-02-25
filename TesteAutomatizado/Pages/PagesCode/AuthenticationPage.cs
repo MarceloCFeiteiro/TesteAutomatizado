@@ -54,7 +54,7 @@ namespace TesteAutomatizado.Testes
         /// <returns>Retorna a mensagem contida no alerta.</returns>
         public string RetornaTextoDaMensagem()
         {
-            return SeleniumTools.RetornaTexto(driver, authenticationMap.Alerta);
+            return SeleniumTools.RetornaTexto(driver, authenticationMap.Alert);
         }
 
 

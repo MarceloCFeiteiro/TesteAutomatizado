@@ -87,6 +87,11 @@ namespace TesteAutomatizado.Data
         /// </summary>
         public string CelularComDDD { get; set; }
 
+        /// <summary>
+        /// Obtém ou define EndercoAlternativo.
+        /// </summary>
+        public string EndercoAlternativo { get; set; }
+
 
         /// <summary>
         /// Método responsável por criar um usuario para uso no sistema.
@@ -112,6 +117,8 @@ namespace TesteAutomatizado.Data
                 InformacaoAdicional = Faker.Lorem.Paragraph(),
                 TelefoneComDDD = Faker.Phone.Number(),
                 CelularComDDD = Faker.Phone.Number(),
+                EndercoAlternativo = Faker.Address.StreetAddress()
+
             };
         }
     }
