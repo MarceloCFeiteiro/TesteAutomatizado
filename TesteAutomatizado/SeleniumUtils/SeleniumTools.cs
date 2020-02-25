@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 
 namespace TesteAutomatizado.SeleniumUtils
 {
@@ -70,6 +71,30 @@ namespace TesteAutomatizado.SeleniumUtils
         {
             var elementoCarregado = EsperaElementoExistir(driver, referencia);
             return elementoCarregado.Text;
+        }
+
+        /// <summary>
+        /// Método responsável por selecinar um valor na combo.
+        /// </summary>
+        /// <param name="driver">Driver atual</param>
+        /// <param name="referencia">Referência do elemento</param>
+        /// <param name="valor">Valor a ser selecionado</param>
+        public static void SelecionarValorCombo(IWebDriver driver, By referencia, string valor)
+        {
+            var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+            var seletor = new SelectElement(elementoCarregado);
+            seletor.SelectByValue(valor);
+        }
+
+        /// <summary>
+        /// Método responsável por retornar uma lista de elementos.
+        /// </summary>
+        /// <param name="driver">Driver atual</param>
+        /// <param name="referencia">Referência dos elementos</param>
+        public static IEnumerable<IWebElement> CarregarListaElementos(IWebDriver driver, By referencia)
+        {
+            EsperaElementoFicarClicavel(driver, referencia);
+            return driver.FindElements(referencia);
         }
 
         /// <summary>
