@@ -58,7 +58,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         public readonly By TxtPasswordCreate = By.Id("passwd");
 
         /// <summary>Define o campo dia do nascimento criação.</summary>
-        public readonly By CmbBirthCreate = By.Id("days");
+        public readonly By CmbDayBirthCreate = By.Id("days");
 
         /// <summary>Define o campo mês nascimento criação.</summary>
         public readonly By CmbMonthBirthCreate = By.Id("months");
@@ -77,7 +77,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         public readonly By TxtLastNameAddress = By.Id("lastname");
 
         /// <summary>Define o campo company do endereço.</summary>
-        public readonly By TxtCompanyAddress = By.Id("company");
+        public readonly By TxtCompanyName= By.Id("company");
 
         /// <summary>Define o campo address1 do endereço.</summary>
         public readonly By TxtAddress1 = By.Id("address1");
@@ -87,6 +87,9 @@ namespace TesteAutomatizado.Pages.PagesMap
 
         /// <summary>Define o campo city do endereço.</summary>
         public readonly By TxtCityAddress = By.Id("city");
+
+        /// <summary>Define o campo State do endereço.</summary>
+        public readonly By CmbStateAddress = By.Id("id_state");
 
         /// <summary>Define o campo postCode do endereço.</summary>
         public readonly By TxtPostCodeAddress = By.Id("postcode");

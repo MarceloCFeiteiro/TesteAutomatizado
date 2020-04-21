@@ -99,12 +99,13 @@ namespace TesteAutomatizado.Data
         /// <returns></returns>
         public User UsuarioPadrao()
         {
-            var usuario = new User();
-
-            usuario.Sexo = Faker.Boolean.Random() ? 'F' : 'M';
-            usuario.PrimeiroNome = Faker.Name.First();
-            usuario.UltimoNome = Faker.Name.Last();
-            usuario.Password = "aaa123";
+            var usuario = new User
+            {
+                Sexo = Faker.Boolean.Random() ? 'F' : 'M',
+                PrimeiroNome = Faker.Name.First(),
+                UltimoNome = Faker.Name.Last(),
+                Password = "aaa123"
+            };
             usuario.Email = Faker.Internet.Email(usuario.PrimeiroNome);
             usuario.DataAniversario = DateTime.Now.AddYears(-20);
             usuario.Empresa = Faker.Company.Name();
@@ -117,7 +118,7 @@ namespace TesteAutomatizado.Data
             usuario.TelefoneComDDD = Faker.Phone.Number();
             usuario.CelularComDDD = Faker.Phone.Number();
             usuario.EndercoAlternativo = Faker.Address.StreetAddress();
-
+           
             return usuario;
         }
     }

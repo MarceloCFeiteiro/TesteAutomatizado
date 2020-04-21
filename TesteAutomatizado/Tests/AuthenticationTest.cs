@@ -110,5 +110,26 @@ namespace TesteAutomatizado
             #endregion
         }
 
+        [Test]
+        [Retry(2)]
+        public void ValidarCadastroDeUsuario()
+        {
+            #region Arranje
+            AuthenticationPage login = new AuthenticationPage(driver);
+            var usuario = GeneratorHelper.GerarUsuario();
+            #endregion
+
+            #region Act
+            login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
+            login.PreencheCampoEmailCreateAccount(usuario.Email);
+            login.ClickBtnCreateAccount();
+            login.PreecherDadosUsuario(usuario);
+            login.ClickBtnRegisterAnAccount();
+            #endregion
+
+            #region Assert
+            Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
+            #endregion
+        }
     }
 }
