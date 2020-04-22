@@ -9,6 +9,7 @@ namespace TesteAutomatizado.Paginas
     public class BasePage
     {
         public IWebDriver driver;
+        private const int tempoDeEspera = 30;
 
         public BasePage(IWebDriver driver)
         {
@@ -21,7 +22,7 @@ namespace TesteAutomatizado.Paginas
         /// <param name="url">URL que será aberta</param>
         public void NavegaParaPagina(string url)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(tempoDeEspera);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
         }

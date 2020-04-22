@@ -11,6 +11,7 @@ namespace TesteAutomatizado.SeleniumUtils
     /// </summary>
     public static class SeleniumTools
     {
+        private const int tempoDeEspera = 30;
         private static WebDriverWait espera = null;
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <returns>Retorna um elemento que pode ser clicado.</returns>
         private static IWebElement EsperaElementoFicarClicavel(IWebDriver driver, By referencia)
         {
-            espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            espera = new WebDriverWait(driver, TimeSpan.FromSeconds(tempoDeEspera));
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(referencia));
         }
 
@@ -117,7 +118,7 @@ namespace TesteAutomatizado.SeleniumUtils
         /// <returns>Retorna um elemento que já existe na página.</returns>
         private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
         {
-            espera = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            espera = new WebDriverWait(driver, TimeSpan.FromSeconds(tempoDeEspera));
             return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
         }
 
