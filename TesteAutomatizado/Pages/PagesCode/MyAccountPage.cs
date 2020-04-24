@@ -32,5 +32,14 @@ namespace TesteAutomatizado.Pages
             return SeleniumTools.RetornaTexto(driver, myAccountMap.TextMyAccount);
         }
 
+        /// <summary>
+        /// Método responsável por retornar o mome do usuário da conta que aparece na página.
+        /// </summary>
+        /// <returns>Retorna a mensagem contida na informação do user.</returns>
+        public string RetornaNomeDoUsuarioDaPagina()
+        {
+            return SeleniumTools.RetornaTexto(driver, myAccountMap.TextUserName);
+        }
+        
     }
 }

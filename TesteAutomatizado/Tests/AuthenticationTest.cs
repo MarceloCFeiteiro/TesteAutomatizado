@@ -111,11 +111,12 @@ namespace TesteAutomatizado
         }
 
         [Test]
-        [Retry(2)]
+        [Retry(1)]
         public void ValidarCadastroDeUsuario()
         {
             #region Arranje
             AuthenticationPage login = new AuthenticationPage(driver);
+            MyAccountPage myAccount = new MyAccountPage(driver);
             var usuario = GeneratorHelper.GerarUsuario();
             #endregion
 
@@ -128,8 +129,10 @@ namespace TesteAutomatizado
             #endregion
 
             #region Assert
-            Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
+            Assert.AreEqual(myAccount.RetornaTextoDaMensagem(), "MY ACCOUNT", "Não foi encontrado o texto referente a pagina My account");
+            Assert.AreEqual(myAccount.RetornaNomeDoUsuarioDaPagina(), usuario.NomeCompleto, "O nome do usuário esta diferente do esperado");
             #endregion
+
         }
     }
 }

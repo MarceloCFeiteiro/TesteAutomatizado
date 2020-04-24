@@ -88,10 +88,9 @@ namespace TesteAutomatizado.Data
         public string CelularComDDD { get; set; }
 
         /// <summary>
-        /// Obtém ou define EndercoAlternativo.
+        /// Obtém ou define EnderecoAlternativo.
         /// </summary>
-        public string EndercoAlternativo { get; set; }
-
+        public string EnderecoAlternativo { get; set; }
 
         /// <summary>
         /// Método responsável por criar um usuario para uso no sistema.
@@ -115,10 +114,10 @@ namespace TesteAutomatizado.Data
             usuario.Cep = Faker.Address.ZipCode();
             usuario.Pais = "United States";
             usuario.InformacaoAdicional = Faker.Lorem.Paragraph();
-            usuario.TelefoneComDDD = Faker.Phone.Number();
-            usuario.CelularComDDD = Faker.Phone.Number();
-            usuario.EndercoAlternativo = Faker.Address.StreetAddress();
-           
+            usuario.TelefoneComDDD = "(23)34732957";
+            usuario.CelularComDDD = "(55)947345729";
+            usuario.EnderecoAlternativo = Faker.Address.StreetAddress();
+
             return usuario;
         }
     }

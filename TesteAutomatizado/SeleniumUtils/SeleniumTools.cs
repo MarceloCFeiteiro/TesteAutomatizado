@@ -11,7 +11,7 @@ namespace TesteAutomatizado.SeleniumUtils
     /// </summary>
     public static class SeleniumTools
     {
-        private const int tempoDeEspera = 30;
+        private const int tempoDeEspera = 5;
         private static WebDriverWait espera = null;
 
         /// <summary>
@@ -88,6 +88,38 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
+        /// Método responsável por selecinar um valor na combo com uma espera adicional.
+        /// Usado quando o combo não estiver clicável ou estiver escondido. 
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento.</param>
+        /// <param name="campoDeEspera">Valor a ser passado para uma espera de carregamento, passar um campo clicável que esteja perto da combo.</param>
+        ///  /// <param name="valor">Valor a ser selecionado no campo baseado no campo value da combo.</param>
+        public static void SelecionarValorCombo(IWebDriver driver, By referencia, By referenciaCampoDeEspera, string valor)
+        {
+            EsperaElementoFicarClicavel(driver, referenciaCampoDeEspera);
+            var elementoCarregado = EsperaElementoExistir(driver, referencia);
+            var seletor = new SelectElement(elementoCarregado);
+            seletor.SelectByValue(valor);
+        }
+
+        /// <summary>
+        /// Método responsável por selecinar um valor na combo com uma espera adicional.
+        /// Usado quando o combo não estiver clicável ou estiver escondido. 
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        /// <param name="referencia">Referência do elemento.</param>
+        /// <param name="campoDeEspera">Valor a ser passado para uma espera de carregamento, passar um campo clicável que esteja perto da combo.</param>
+        /// <param name="opcao">Valor a ser selecionado no campo baseado no campo value da combo.</param>
+        public static void SelecionarOpcaoCombo(IWebDriver driver, By referencia, By referenciaCampoDeEspera, string opcao)
+        {
+            EsperaElementoFicarClicavel(driver, referenciaCampoDeEspera);
+            var elementoCarregado = EsperaElementoExistir(driver, referencia);
+            var seletor = new SelectElement(elementoCarregado);
+            seletor.SelectByText(opcao);
+        }
+
+        /// <summary>
         /// Método responsável por retornar uma lista de elementos.
         /// </summary>
         /// <param name="driver">Driver atual</param>
@@ -119,7 +151,7 @@ namespace TesteAutomatizado.SeleniumUtils
         private static IWebElement EsperaElementoExistir(IWebDriver driver, By referencia)
         {
             espera = new WebDriverWait(driver, TimeSpan.FromSeconds(tempoDeEspera));
-            return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(referencia));
+            return espera.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(referencia));
         }
 
         /// <summary>

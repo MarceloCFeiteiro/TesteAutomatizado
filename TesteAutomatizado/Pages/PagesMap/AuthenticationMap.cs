@@ -57,11 +57,20 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o campo Password criação.</summary>
         public readonly By TxtPasswordCreate = By.Id("passwd");
 
+        /// <summary>Define o campo de clicagem uniform-days.</summary>
+        public readonly By FieldDayBirth = By.Id("uniform-days");
+
         /// <summary>Define o campo dia do nascimento criação.</summary>
         public readonly By CmbDayBirthCreate = By.Id("days");
 
+        /// <summary>Define o campo de clicagem uniform-month.</summary>
+        public readonly By FieldMonthBirth = By.Id("uniform-month");
+
         /// <summary>Define o campo mês nascimento criação.</summary>
         public readonly By CmbMonthBirthCreate = By.Id("months");
+
+        /// <summary>Define o campo de clicagem uniform-year.</summary>
+        public readonly By FieldYearBirth = By.Id("uniform-year");
 
         /// <summary>Define o campo ano nascimento criação.</summary>
         public readonly By CmbYearBirthCreate = By.Id("years");
