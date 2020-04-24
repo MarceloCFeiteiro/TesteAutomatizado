@@ -119,6 +119,7 @@ namespace TesteAutomatizado
             var usuario = GeneratorHelper.GerarUsuario();
             #endregion
 
+
             #region Act
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmailCreateAccount(usuario.Email);
