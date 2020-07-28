@@ -72,7 +72,7 @@ namespace TesteAutomatizado
             #endregion
 
             #region Assert
-            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failed.", "Mensagem com erro para simular uma falha");
+            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.", "Mensagem com erro para simular uma falha");
             #endregion
         }
 
