@@ -167,15 +167,5 @@ namespace TesteAutomatizado.Testes
             SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbYearBirthCreate, authenticationMap.TxtCompanyName, data.Year.ToString());
         }
 
-        /// <summary>
-        /// Método responsavél por formatar um texto.
-        /// </summary>
-        /// <param name="text">Texto a ser formatado.</param>
-        /// <returns>Retorna um texto formatado.</returns>
-        private string FormatString(string text)
-        {
-            return text.Replace("\r", "").Replace("\n", "").Replace("×", "");
-        }
-
     }
 }
