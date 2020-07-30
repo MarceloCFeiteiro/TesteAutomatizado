@@ -46,6 +46,10 @@ namespace TesteAutomatizado.SeleniumUtils
         public static void EnviarTexto(IWebDriver driver, By referencia, string texto)
         {
             var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+
+            if (!string.IsNullOrEmpty(elementoCarregado.GetAttribute("value")))
+                LimparAtributoValueCampoInput(elementoCarregado);
+
             elementoCarregado.SendKeys(texto);
         }
 
@@ -89,7 +93,7 @@ namespace TesteAutomatizado.SeleniumUtils
 
         /// <summary>
         /// Método responsável por selecinar um valor na combo com uma espera adicional.
-        /// Usado quando o combo não estiver clicável ou estiver escondido. 
+        /// Usado quando o combo não estiver clicável ou estiver escondido.
         /// </summary>
         /// <param name="driver">Driver atual.</param>
         /// <param name="referencia">Referência do elemento.</param>
@@ -105,7 +109,7 @@ namespace TesteAutomatizado.SeleniumUtils
 
         /// <summary>
         /// Método responsável por selecinar um valor na combo com uma espera adicional.
-        /// Usado quando o combo não estiver clicável ou estiver escondido. 
+        /// Usado quando o combo não estiver clicável ou estiver escondido.
         /// </summary>
         /// <param name="driver">Driver atual.</param>
         /// <param name="referencia">Referência do elemento.</param>
@@ -127,7 +131,18 @@ namespace TesteAutomatizado.SeleniumUtils
         public static IEnumerable<IWebElement> CarregarListaElementos(IWebDriver driver, By referencia)
         {
             EsperaElementoFicarClicavel(driver, referencia);
+
             return driver.FindElements(referencia);
+        }
+
+        /// <summary>
+        /// Método responsável por criar uma nova Action
+        /// </summary>
+        /// <param name="driver">Driver atual</param>
+        /// <returns>Retorna uma nova Actions</returns>
+        private static Actions CriarAction(IWebDriver driver)
+        {
+            return new Actions(driver);
         }
 
         /// <summary>
@@ -155,13 +170,12 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
-        /// Método responsável por criar uma nova Action
+        /// Método responsável por limpar o atributo value de um campo input.
         /// </summary>
-        /// <param name="driver">Driver atual</param>
-        /// <returns>Retorna uma nova Actions</returns>
-        private static Actions CriarAction(IWebDriver driver)
+        /// <param name="elementoCarregado"></param>
+        private static void LimparAtributoValueCampoInput(IWebElement elementoCarregado)
         {
-            return new Actions(driver);
+            elementoCarregado.Clear();
         }
     }
 }

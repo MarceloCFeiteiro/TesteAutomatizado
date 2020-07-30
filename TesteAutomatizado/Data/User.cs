@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bogus;
+using System;
 
 namespace TesteAutomatizado.Data
 {
@@ -98,25 +99,27 @@ namespace TesteAutomatizado.Data
         /// <returns></returns>
         public User UsuarioPadrao()
         {
+            var faker = new Faker("pt_BR");
+            var estadoFaker = new Bogus.DataSets.Address("en");
             var usuario = new User
             {
-                Sexo = Faker.Boolean.Random() ? 'F' : 'M',
-                PrimeiroNome = Faker.Name.First(),
-                UltimoNome = Faker.Name.Last(),
+                Sexo = faker.Random.Bool() ? 'F' : 'M',
+                PrimeiroNome = faker.Name.FirstName(),
+                UltimoNome = faker.Name.LastName(),
                 Password = "aaa123"
             };
-            usuario.Email = Faker.Internet.Email(usuario.PrimeiroNome);
+            usuario.Email = faker.Internet.Email(usuario.PrimeiroNome);
             usuario.DataAniversario = DateTime.Now.AddYears(-20);
-            usuario.Empresa = Faker.Company.Name();
-            usuario.EmpresaEndereco = Faker.Address.StreetAddress();
-            usuario.Cidade = Faker.Address.City();
-            usuario.Estado = Faker.Address.UsState();
-            usuario.Cep = Faker.Address.ZipCode();
+            usuario.Empresa = faker.Company.CompanyName();
+            usuario.EmpresaEndereco = faker.Address.StreetAddress();
+            usuario.Cidade = faker.Address.City();
+            usuario.Estado = estadoFaker.State();
+            usuario.Cep = "12345";
             usuario.Pais = "United States";
-            usuario.InformacaoAdicional = Faker.Lorem.Paragraph();
+            usuario.InformacaoAdicional = faker.Lorem.Lines();
             usuario.TelefoneComDDD = "(23)34732957";
             usuario.CelularComDDD = "(55)947345729";
-            usuario.EnderecoAlternativo = Faker.Address.StreetAddress();
+            usuario.EnderecoAlternativo = faker.Address.StreetAddress();
 
             return usuario;
         }
