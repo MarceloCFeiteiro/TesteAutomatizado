@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
-using System.Dynamic;
 using TesteAutomatizado.Helpers;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
@@ -19,15 +18,19 @@ namespace TesteAutomatizado
             MyAccountPage myAccountPage = new MyAccountPage(driver);
             AuthenticationPage login = new AuthenticationPage(driver);
 
+            var User = ManipularArquivoHelper.LerDeUmArquivoQueEstaNoFormatoJson();
+
             #endregion Arranje
 
             #region Act
 
             index.NavegaParaPagina(Properties.Resource.UrlPrincipal);
             index.ClickBtnSign_in();
-            login.PreencheCampoEmail("automatizado@test.com.br");
-            login.PreencheCampoPassword("aaa123");
+            login.PreencheCampoEmail(User.Email);
+            login.PreencheCampoPassword(User.Password);
             login.ClickBtnSign_in();
+
+
 
             #endregion Act
 
@@ -165,11 +168,11 @@ namespace TesteAutomatizado
 
             #endregion Assert
 
-            dynamic usuarioTemp = new ExpandoObject();
-            usuarioTemp.Email = usuario.Email;
-            usuarioTemp.Password = usuario.Password;
+            #region Finalization
 
-            ManipularArquivoHelper.SalvarNoArquivoEmFormatoJson(usuarioTemp);
+            ManipularArquivoHelper.SalvarNoArquivoEmFormatoJson(usuario);
+
+            #endregion Finalization
         }
     }
 }

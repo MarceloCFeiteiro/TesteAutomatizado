@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using TesteAutomatizado.Data;
 
 namespace TesteAutomatizado.Helpers
 {
@@ -18,7 +19,7 @@ namespace TesteAutomatizado.Helpers
         /// Método responsável por salvar um registro no arquivo em formato json.
         /// </summary>
         /// <param name="obj">Entidade a ser salva</param>
-        public static void SalvarNoArquivoEmFormatoJson(object obj)
+        public static void SalvarNoArquivoEmFormatoJson(User obj) 
         {
             string texto = ConversorJsonHelper.EntidadeParaJson(obj);
 
@@ -29,7 +30,7 @@ namespace TesteAutomatizado.Helpers
         /// Métoro responsável por retornar um objeto dinâmico com os dados do arquivo.
         /// </summary>
         /// <returns>Retorna um tipo dinâmico com os valores de um json</returns>
-        public static dynamic LerDeUmArquivoQueEstaNoFormatoJson()
+        public static User LerDeUmArquivoQueEstaNoFormatoJson()
         {
             string texto = File.ReadAllText(string.Concat(Caminho, NomeArquivo));
 

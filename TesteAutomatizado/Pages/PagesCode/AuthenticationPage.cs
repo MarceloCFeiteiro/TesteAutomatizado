@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using TesteAutomatizado.Data;
@@ -28,10 +27,10 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Método responsável por preencher o campo email.
         /// </summary>
-        /// <param name="nome">Nome a ser preenchido</param>
-        public void PreencheCampoEmail(string nome)
+        /// <param name="email">Email a ser preenchido</param>
+        public void PreencheCampoEmail(string email)
         {
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtEmail, nome);
+            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtEmail, email);
         }
 
         /// <summary>
@@ -176,6 +175,5 @@ namespace TesteAutomatizado.Testes
         {
             return text.Replace("\r", "").Replace("\n", "").Replace("×", "");
         }
-
     }
 }

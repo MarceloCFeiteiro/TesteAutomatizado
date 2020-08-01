@@ -33,7 +33,9 @@ namespace TesteAutomatizado.SeleniumUtils
         public static void ClicarAction(IWebDriver driver, By referencia)
         {
             var action = CriarAction(driver);
+
             var elementoCarregado = EsperaElementoFicarClicavel(driver, referencia);
+
             action.Click(elementoCarregado);
         }
 

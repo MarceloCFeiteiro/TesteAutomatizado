@@ -5,9 +5,9 @@ namespace TesteAutomatizado.Helpers
 {
     public static class ConversorJsonHelper
     {
-        public static dynamic JsonParaEntidade(string json)
+        public static User JsonParaEntidade(string json)
         {
-            dynamic obj = JsonConvert.DeserializeObject<User>(json);
+            var obj = JsonConvert.DeserializeObject<User>(json);
 
             return obj;
         }

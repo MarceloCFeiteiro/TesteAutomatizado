@@ -12,5 +12,8 @@ namespace TesteAutomatizado.Pages.PagesMap
 
         /// <summary>Define o campo listCloths que guarda uma lista de roupas.</summary>
         public readonly By ListClothes = By.CssSelector("ul.product_list>li");
+
+        /// <summary>Define o campo do botão para adicionar no carinho.</summary>
+        public readonly By ButtonAddToCart = By.CssSelector("a[title='Add to cart']>span");
     }
 }

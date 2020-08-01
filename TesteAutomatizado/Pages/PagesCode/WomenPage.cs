@@ -1,12 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenQA.Selenium;
+using TesteAutomatizado.Pages.PagesMap;
+using TesteAutomatizado.Paginas;
+using TesteAutomatizado.SeleniumUtils;
 
 namespace TesteAutomatizado.Pages.PagesCode
 {
-  public  class WomenPage
+    /// <summary>
+    /// Classe responsável por armazenar os métodos da página women.
+    /// </summary>
+    public class WomenPage : BasePage
     {
+        /// <summary>
+        /// Atributo responsável por armazenar uma referência para a classe womenMap.
+        /// </summary>
+        private readonly WomenMap womenMap = new WomenMap();
+
+        /// <summary>
+        /// Construtor da classe.
+        /// </summary>
+        /// <param name="driver">Driver atual.</param>
+        public WomenPage(IWebDriver driver) : base(driver)
+        {
+        }
+
+
+        /// <summary>
+        /// Método responsável por navegar até a página women. 
+        /// </summary>
+        public void NavegaParaAPaginaWomen()
+        {
+            SeleniumTools.Clicar(driver, womenMap.LinkWomen); ;
+        }
     }
 }
