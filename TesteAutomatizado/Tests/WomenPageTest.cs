@@ -31,6 +31,9 @@ namespace TesteAutomatizado.Tests
             login.ClickBtnSign_in();
 
             womenPage.NavegaParaAPaginaWomen();
+            womenPage.ColocarItemCarrinho();
+
+            var t = "";
 
             #endregion Act
         }

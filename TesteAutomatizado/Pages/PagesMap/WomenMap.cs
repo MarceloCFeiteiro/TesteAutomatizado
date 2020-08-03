@@ -15,5 +15,8 @@ namespace TesteAutomatizado.Pages.PagesMap
 
         /// <summary>Define o campo do botão para adicionar no carinho.</summary>
         public readonly By ButtonAddToCart = By.CssSelector("a[title='Add to cart']>span");
+
+        /// <summary>Define o campo do botão para para continuar para o checkout.</summary>
+        public readonly By ButtonProceedToCheckout = By.CssSelector("div.button-container>a[title='Proceed to checkout']");
     }
 }

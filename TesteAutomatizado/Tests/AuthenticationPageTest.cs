@@ -4,7 +4,7 @@ using TesteAutomatizado.Helpers;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
 
-namespace TesteAutomatizado
+namespace TesteAutomatizado.Tests
 {
     public class AuthenticationTest : BaseTeste
     {
@@ -29,8 +29,6 @@ namespace TesteAutomatizado
             login.PreencheCampoEmail(User.Email);
             login.PreencheCampoPassword(User.Password);
             login.ClickBtnSign_in();
-
-
 
             #endregion Act
 

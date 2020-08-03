@@ -10,6 +10,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         #region AUTHENTICATION
 
         #region ALREADY REGISTERED?
+
         /// <summary>Define o campo Email.</summary>
         public readonly By TxtEmail = By.Id("email");
 
@@ -22,7 +23,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o campo de recuperação de senha.</summary>
         public readonly By LinkForgotPassword = By.LinkText("Recover your forgotten password");
 
-        #endregion
+        #endregion ALREADY REGISTERED?
 
         #region CREATE AN ACCOUNT
 
@@ -35,13 +36,14 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o botão create an account.</summary>
         public readonly By BtnCreateAnAccount = By.Id("SubmitCreate");
 
-        #endregion
+        #endregion CREATE AN ACCOUNT
 
-        #endregion
+        #endregion AUTHENTICATION
 
         #region AUTHENTICATION CREATE AN ACCOUNT.
 
         #region YOUR PERSONAL INFORMATION
+
         /// <summary>Define o campo genero masculino na criação.</summary>
         public By RadioMrCreate = By.Id("id_gender1");
 
@@ -75,7 +77,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o campo ano nascimento criação.</summary>
         public readonly By CmbYearBirthCreate = By.Id("years");
 
-        #endregion
+        #endregion YOUR PERSONAL INFORMATION
 
         #region YOUR ADDRESS
 
@@ -86,7 +88,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         public readonly By TxtLastNameAddress = By.Id("lastname");
 
         /// <summary>Define o campo company do endereço.</summary>
-        public readonly By TxtCompanyName= By.Id("company");
+        public readonly By TxtCompanyName = By.Id("company");
 
         /// <summary>Define o campo address1 do endereço.</summary>
         public readonly By TxtAddress1 = By.Id("address1");
@@ -118,7 +120,7 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o campo addressFutureReference do endereço.</summary>
         public readonly By TxtAddressFutureReference = By.Id("alias");
 
-        #endregion
+        #endregion YOUR ADDRESS
 
         /// <summary>Define o botão register.</summary>
         public readonly By BtnRegister = By.Id("submitAccount");
@@ -126,6 +128,6 @@ namespace TesteAutomatizado.Pages.PagesMap
         /// <summary>Define o a mesagem de campo requirido.</summary>
         public readonly By MsnRequiredFild = By.ClassName("pull-right");
 
-        #endregion
+        #endregion AUTHENTICATION CREATE AN ACCOUNT.
     }
 }

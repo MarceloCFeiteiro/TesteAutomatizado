@@ -131,13 +131,19 @@
     <Compile Include="Helpers\CriaRelatorioHelper.cs" />
     <Compile Include="Helpers\GerarUsuarioHelper.cs" />
     <Compile Include="Helpers\ManipularArquivoHelper.cs" />
+    <Compile Include="Pages\PagesCode\AddressesPage.cs" />
     <Compile Include="Pages\PagesCode\BasePage.cs" />
     <Compile Include="Pages\PagesCode\IndexPage.cs" />
     <Compile Include="Pages\PagesCode\MyAccountPage.cs" />
+    <Compile Include="Pages\PagesCode\ShippingPage.cs" />
+    <Compile Include="Pages\PagesCode\ShoppingCartSummaryPage.cs" />
     <Compile Include="Pages\PagesCode\WomenPage.cs" />
+    <Compile Include="Pages\PagesMap\AddressesMap.cs" />
     <Compile Include="Pages\PagesMap\AuthenticationMap.cs" />
     <Compile Include="Pages\PagesMap\IndexMap.cs" />
     <Compile Include="Pages\PagesMap\MyAccountMap.cs" />
+    <Compile Include="Pages\PagesMap\ShippingMap.cs" />
+    <Compile Include="Pages\PagesMap\ShoppingCartSummaryMap.cs" />
     <Compile Include="Pages\PagesMap\WomenMap.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -40,6 +40,5 @@ namespace TesteAutomatizado.Pages
         {
             return SeleniumTools.RetornaTexto(driver, myAccountMap.TextUserName);
         }
-        
     }
 }

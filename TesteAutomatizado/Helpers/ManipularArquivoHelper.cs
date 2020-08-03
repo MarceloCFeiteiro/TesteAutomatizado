@@ -19,11 +19,11 @@ namespace TesteAutomatizado.Helpers
         /// Método responsável por salvar um registro no arquivo em formato json.
         /// </summary>
         /// <param name="obj">Entidade a ser salva</param>
-        public static void SalvarNoArquivoEmFormatoJson(User obj) 
+        public static void SalvarNoArquivoEmFormatoJson(User obj)
         {
             string texto = ConversorJsonHelper.EntidadeParaJson(obj);
 
-            File.WriteAllText(string.Concat(Caminho,NomeArquivo),texto);
+            File.WriteAllText(string.Concat(Caminho, NomeArquivo), texto);
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.IO;
 namespace TesteAutomatizado.Helpers
 {
     /// <summary>
-    /// Classe estática responsável por manipular eventos de captura de prints. 
+    /// Classe estática responsável por manipular eventos de captura de prints.
     /// </summary>
     public static class CapturaImagensHelper
     {
@@ -48,5 +48,4 @@ namespace TesteAutomatizado.Helpers
             return screenshot;
         }
     }
-
 }

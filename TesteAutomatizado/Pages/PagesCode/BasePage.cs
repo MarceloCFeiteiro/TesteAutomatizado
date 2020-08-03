@@ -26,6 +26,5 @@ namespace TesteAutomatizado.Paginas
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
         }
-
     }
 }

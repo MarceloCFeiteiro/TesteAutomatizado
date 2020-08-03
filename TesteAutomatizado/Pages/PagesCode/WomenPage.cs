@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System.Linq;
 using TesteAutomatizado.Pages.PagesMap;
 using TesteAutomatizado.Paginas;
 using TesteAutomatizado.SeleniumUtils;
@@ -23,13 +24,21 @@ namespace TesteAutomatizado.Pages.PagesCode
         {
         }
 
-
         /// <summary>
-        /// Método responsável por navegar até a página women. 
+        /// Método responsável por navegar até a página women.
         /// </summary>
         public void NavegaParaAPaginaWomen()
         {
             SeleniumTools.Clicar(driver, womenMap.LinkWomen); ;
+        }
+
+        public void ColocarItemCarrinho()
+        {
+            var listaRoupas = SeleniumTools.CarregarListaElementos(driver, womenMap.ListClothes);
+
+            SeleniumTools.MoverAteElemento(driver, listaRoupas.FirstOrDefault());
+            var BotaoAddCart = SeleniumTools.PegarElemento(listaRoupas.FirstOrDefault(), womenMap.ButtonAddToCart);
+            SeleniumTools.Clicar(BotaoAddCart);
         }
     }
 }
