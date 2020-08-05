@@ -39,6 +39,7 @@ namespace TesteAutomatizado.Pages.PagesCode
             SeleniumTools.MoverAteElemento(driver, listaRoupas.FirstOrDefault());
             var BotaoAddCart = SeleniumTools.PegarElemento(listaRoupas.FirstOrDefault(), womenMap.ButtonAddToCart);
             SeleniumTools.Clicar(BotaoAddCart);
+            SeleniumTools.Clicar(driver, womenMap.ButtonProceedToCheckout);
         }
     }
 }

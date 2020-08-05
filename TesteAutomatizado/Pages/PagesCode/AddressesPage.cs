@@ -27,9 +27,9 @@ namespace TesteAutomatizado.Pages.PagesCode
         /// Método responsável por continuar para o checkout
         /// </summary>
         /// <param name="webDriver"></param>
-        public void ContinuarCheckout(IWebDriver webDriver)
+        public void ContinuarCheckout()
         {
-            SeleniumTools.Clicar(webDriver, addressesMap.ButtonProceedToCheckout);
+            SeleniumTools.Clicar(driver, addressesMap.ButtonProceedToCheckout);
         }
     }
 }

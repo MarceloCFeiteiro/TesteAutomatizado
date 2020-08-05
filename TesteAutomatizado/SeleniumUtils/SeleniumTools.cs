@@ -90,19 +90,20 @@ namespace TesteAutomatizado.SeleniumUtils
         }
 
         /// <summary>
-        /// Método responsável por marcar uma checkbox. 
+        /// Método responsável por marcar uma checkbox.
         /// </summary>
         /// <param name="webDriver">Driver atual.</param>
         /// <param name="referencia">Referência do elemento para onde o texto será enviado.</param>
         /// <param name="marcar">/////////////////</param>
         public static void MarcaCheckBox(IWebDriver webDriver, By referencia, bool marcar = true)
         {
-            bool marcada;
-            do
-            {
-                marcada = EsperaElementoChkBoxEstarMarcado(webDriver, referencia, marcar);
-            }
-            while (marcada);
+            EsperaElementoChkBoxEstarMarcado(webDriver, referencia, false);
+
+            var elementoCarregado = EsperaElementoExistir(webDriver, referencia);
+
+            Clicar(elementoCarregado);
+
+            EsperaElementoChkBoxEstarMarcado(webDriver, referencia, marcar);
         }
 
         /// <summary>

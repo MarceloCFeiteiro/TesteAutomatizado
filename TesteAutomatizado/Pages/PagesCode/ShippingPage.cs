@@ -27,18 +27,19 @@ namespace TesteAutomatizado.Pages.PagesCode
         /// Método responsável por continuar para o checkout
         /// </summary>
         /// <param name="webDriver"></param>
-        public void ContinuarCheckout(IWebDriver webDriver)
+        public void ContinuarCheckout()
         {
-            SeleniumTools.Clicar(webDriver, shippingMap.ButtonProceedToCheckout);
+            MarcarCheckboxTermosDeServico();
+            SeleniumTools.Clicar(driver, shippingMap.ButtonProceedToCheckout);
         }
 
         /// <summary>
         /// Método resposável por marcar a checkbox de termos de licença
         /// </summary>
         /// <param name="webDriver"></param>
-        public void MarcarCheckboxTermosDeServico(IWebDriver webDriver)
+        public void MarcarCheckboxTermosDeServico()
         {
-            SeleniumTools.MarcaCheckBox(webDriver, shippingMap.ChkTermsOfService);
+            SeleniumTools.MarcaCheckBox(driver, shippingMap.ChkTermsOfService);
         }
     }
 }

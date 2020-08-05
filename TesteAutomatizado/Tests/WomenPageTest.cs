@@ -17,6 +17,10 @@ namespace TesteAutomatizado.Tests
             IndexPage index = new IndexPage(driver);
             AuthenticationPage login = new AuthenticationPage(driver);
             WomenPage womenPage = new WomenPage(driver);
+            ShoppingCartSummaryPage shoppingCartSummaryPage = new ShoppingCartSummaryPage(driver);
+            AddressesPage addressesPage = new AddressesPage(driver);
+            ShippingPage shippingPage = new ShippingPage(driver);
+            PaymentPage paymentPage = new PaymentPage(driver);
 
             var User = ManipularArquivoHelper.LerDeUmArquivoQueEstaNoFormatoJson();
 
@@ -26,6 +30,7 @@ namespace TesteAutomatizado.Tests
 
             index.NavegaParaPagina(Properties.Resource.UrlPrincipal);
             index.ClickBtnSign_in();
+
             login.PreencheCampoEmail(User.Email);
             login.PreencheCampoPassword(User.Password);
             login.ClickBtnSign_in();
@@ -33,9 +38,28 @@ namespace TesteAutomatizado.Tests
             womenPage.NavegaParaAPaginaWomen();
             womenPage.ColocarItemCarrinho();
 
-            var t = "";
+            shoppingCartSummaryPage.ContinuarCheckout();
+
+            addressesPage.ContinuarCheckout();
+
+            shippingPage.ContinuarCheckout();
+
+            paymentPage.EscolherTipoDePagamento();
+            paymentPage.ConfirmarOrdem();
 
             #endregion Act
+
+            #region Assert
+
+            Assert.AreEqual(paymentPage.RetornaTextoDaMensagem(), "ORDER CONFIRMATION");
+
+            #endregion Assert
+
+            #region Finalization
+
+            index.ClickBtnSign_Out();
+
+            #endregion Finalization
         }
     }
 }
