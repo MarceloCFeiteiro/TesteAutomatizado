@@ -22,9 +22,10 @@ namespace TesteAutomatizado.Paginas
         /// <param name="url">URL que será aberta</param>
         public void NavegaParaPagina(string url)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(tempoDeEspera);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(tempoDeEspera);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(tempoDeEspera);
         }
     }
 }

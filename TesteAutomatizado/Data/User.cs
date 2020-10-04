@@ -119,7 +119,7 @@ namespace TesteAutomatizado.Data
             usuario.InformacaoAdicional = faker.Lorem.Lines();
             usuario.TelefoneComDDD = "(23)34732957";
             usuario.CelularComDDD = "(55)947345729";
-            usuario.EnderecoAlternativo = faker.Address.StreetAddress();
+            usuario.EnderecoAlternativo = faker.Random.Bool() ? "Home" : "Work";
 
             return usuario;
         }

@@ -25,6 +25,7 @@ namespace TesteAutomatizado.Tests
             #region Act
 
             index.NavegaParaPagina(Properties.Resource.UrlPrincipal);
+
             index.ClickBtnSign_in();
             login.PreencheCampoEmail(User.Email);
             login.PreencheCampoPassword(User.Password);
