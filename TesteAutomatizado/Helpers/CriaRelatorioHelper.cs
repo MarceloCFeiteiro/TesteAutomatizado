@@ -61,10 +61,12 @@ namespace TesteAutomatizado.Helpers
                         _test.Log(logstatus, "Test ended with " + logstatus + " – " + errorMessage);
                         _test.Log(logstatus, "Snapshot below: " + _test.AddScreenCaptureFromPath(screenShotPath));
                         break;
+
                     case TestStatus.Skipped:
                         logstatus = Status.Skip;
                         _test.Log(logstatus, "Test ended with " + logstatus);
                         break;
+
                     default:
                         logstatus = Status.Pass;
                         _test.Log(logstatus, "Test ended with " + logstatus);
@@ -98,7 +100,6 @@ namespace TesteAutomatizado.Helpers
             {
                 throw new Exception("Não foi possível gravar no arquivo");
             }
-           
         }
     }
 }

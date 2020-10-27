@@ -1,39 +1,51 @@
-﻿using NUnit.Framework;
+﻿using Bogus;
+using NUnit.Framework;
 using System.Collections.Generic;
+using TesteAutomatizado.Data;
 using TesteAutomatizado.Helpers;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
 
-namespace TesteAutomatizado
+namespace TesteAutomatizado.Tests
 {
-    public class AuthenticationTest : BaseTeste
+    internal class AuthenticationTest : BaseTeste
     {
         [Test]
         [Retry(2)]
         public void LoginComUsuarioEPasswordCorretos()
         {
             #region Arranje
+
             IndexPage index = new IndexPage(driver);
             MyAccountPage myAccountPage = new MyAccountPage(driver);
             AuthenticationPage login = new AuthenticationPage(driver);
-            #endregion
+
+            var User = ManipularArquivoHelper.LerDeUmArquivoQueEstaNoFormatoJson();
+
+            #endregion Arranje
 
             #region Act
+
             index.NavegaParaPagina(Properties.Resource.UrlPrincipal);
+
             index.ClickBtnSign_in();
-            login.PreencheCampoEmail("automatizado@test.com.br");
-            login.PreencheCampoPassword("aaa123");
+            login.PreencheCampoEmail(User.Email);
+            login.PreencheCampoPassword(User.Password);
             login.ClickBtnSign_in();
-            #endregion
+
+            #endregion Act
 
             #region Assert
+
             Assert.AreEqual(myAccountPage.RetornaTextoDaMensagem(), "MY ACCOUNT");
-            #endregion
+
+            #endregion Assert
 
             #region Finalization
-            index.ClickBtnSign_Out();
-            #endregion
 
+            index.ClickBtnSign_Out();
+
+            #endregion Finalization
         }
 
         [Test]
@@ -41,19 +53,25 @@ namespace TesteAutomatizado
         public void LoginComUsuarioEPasswordIncorretos()
         {
             #region Arranje
+
             AuthenticationPage login = new AuthenticationPage(driver);
-            #endregion
+
+            #endregion Arranje
 
             #region Act
+
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmail("Email@Email.com.br");
             login.PreencheCampoPassword("SuperSecretPassword!");
             login.ClickBtnSign_in();
-            #endregion
+
+            #endregion Act
 
             #region Assert
+
             Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failed.");
-            #endregion
+
+            #endregion Assert
         }
 
         [Test]
@@ -61,19 +79,25 @@ namespace TesteAutomatizado
         public void LoginComUsuarioEPasswordIncorretosFail()
         {
             #region Arranje
+
             AuthenticationPage login = new AuthenticationPage(driver);
-            #endregion
+
+            #endregion Arranje
 
             #region Act
+
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmail("Email@Email.com.br");
             login.PreencheCampoPassword("SuperSecretPassword!");
             login.ClickBtnSign_in();
-            #endregion
+
+            #endregion Act
 
             #region Assert
-            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failedef.", "Mensagem com erro para simular uma falha");
-            #endregion
+
+            Assert.AreEqual(login.RetornaTextoDaMensagem(), "Authentication failed.", "Mensagem com erro para simular uma falha");
+
+            #endregion Assert
         }
 
         [Test]
@@ -81,8 +105,9 @@ namespace TesteAutomatizado
         public void ValidarMensagemNaoInformacaoDosCamposDeCadastro()
         {
             #region Arranje
+
             AuthenticationPage login = new AuthenticationPage(driver);
-            var usuario = GeneratorHelper.GerarUsuario();
+            var usuario = GerarUsuarioHelper.GerarUsuario();
             var listaErros = new List<string> { "You must register at least one phone number.",
                                                 "lastname is required.",
                                                 "firstname is required.",
@@ -91,45 +116,77 @@ namespace TesteAutomatizado
                                                 "city is required.",
                                                 "The Zip/Postal code you've entered is invalid. It must follow this format: 00000",
                                                 "This country requires you to choose a State."};
-            #endregion
+
+            #endregion Arranje
 
             #region Act
+
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmailCreateAccount(usuario.Email);
             login.ClickBtnCreateAccount();
             login.ClickBtnRegisterAnAccount();
-            #endregion
+
+            #endregion Act
 
             #region Assert
+
             Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
             var listaErrosPagina = login.RetornaListadeErros();
-            for (int i = 0; i < listaErros.Count; i++)
-            {
-                listaErros[i].Equals(listaErrosPagina[i]);
-            }
-            #endregion
+            Assert.AreEqual(listaErros, listaErrosPagina);
+
+            //for (int i = 0; i < listaErros.Count; i++)
+            //{
+            //    listaErros[i].Equals(listaErrosPagina[i]);
+            //}
+
+            #endregion Assert
         }
 
         [Test]
-        [Retry(2)]
+        [Retry(1)]
         public void ValidarCadastroDeUsuario()
         {
             #region Arranje
+
             AuthenticationPage login = new AuthenticationPage(driver);
-            var usuario = GeneratorHelper.GerarUsuario();
-            #endregion
+            MyAccountPage myAccount = new MyAccountPage(driver);
+            var usuario = GerarUsuarioHelper.GerarUsuario();
+
+            #endregion Arranje
 
             #region Act
+
             login.NavegaParaPagina(Properties.Resource.UrlAuthentication);
             login.PreencheCampoEmailCreateAccount(usuario.Email);
             login.ClickBtnCreateAccount();
             login.PreecherDadosUsuario(usuario);
             login.ClickBtnRegisterAnAccount();
-            #endregion
+
+            #endregion Act
 
             #region Assert
-            Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
-            #endregion
+
+            Assert.AreEqual(myAccount.RetornaTextoDaMensagem(), "MY ACCOUNT", "Não foi encontrado o texto referente a pagina My account");
+            Assert.AreEqual(myAccount.RetornaNomeDoUsuarioDaPagina(), usuario.NomeCompleto, "O nome do usuário esta diferente do esperado");
+
+            #endregion Assert
+
+            #region Finalization
+
+            ManipularArquivoHelper.SalvarNoArquivoEmFormatoJson(usuario);
+
+            #endregion Finalization
+        }
+
+
+
+        [Test]
+        public void Testando()
+        {
+            var p1 = new Pessoa { Nome = "Marcelo", Sobrenome = "Feiteiro" };
+            var p2 = new Pessoa { Nome = "Marcelo", Sobrenome = "Feiteiro" };
+
+            Assert.AreSame(p1, p2);
         }
     }
 }

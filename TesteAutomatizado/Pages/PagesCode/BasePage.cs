@@ -17,15 +17,15 @@ namespace TesteAutomatizado.Paginas
         }
 
         /// <summary>
-        /// Método responsável por maximixar a tela e navegar para a url especificada.
+        /// Método responsável por maximizar a tela e navegar para a url especificada.
         /// </summary>
         /// <param name="url">URL que será aberta</param>
         public void NavegaParaPagina(string url)
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(tempoDeEspera);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(tempoDeEspera);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(tempoDeEspera);
         }
-
     }
 }

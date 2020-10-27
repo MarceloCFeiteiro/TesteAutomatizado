@@ -27,10 +27,10 @@ namespace TesteAutomatizado.Testes
         /// <summary>
         /// Método responsável por preencher o campo email.
         /// </summary>
-        /// <param name="nome">Nome a ser preenchido</param>
-        public void PreencheCampoEmail(string nome)
+        /// <param name="email">Email a ser preenchido</param>
+        public void PreencheCampoEmail(string email)
         {
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtEmail, nome);
+            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtEmail, email);
         }
 
         /// <summary>
@@ -125,19 +125,17 @@ namespace TesteAutomatizado.Testes
         /// <param name="usuario"></param>
         private void PreencherEndereco(User usuario)
         {
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtFirstNameAddress, usuario.PrimeiroNome);
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtLastNameAddress, usuario.UltimoNome);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtCompanyName, usuario.Empresa);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtAddress1, usuario.EmpresaEndereco);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtAddress2, usuario.NomeCompleto);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtCityAddress, usuario.NomeCompleto);
-            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbStateAddress, usuario.Estado);
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtPostCodeAddress, usuario.NomeCompleto);
-            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbCountryAddress, usuario.Pais);
+            SeleniumTools.SelecionarOpcaoCombo(driver, authenticationMap.CmbStateAddress, authenticationMap.TxtPostCodeAddress, usuario.Estado);
+            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtPostCodeAddress, usuario.Cep);
+            SeleniumTools.SelecionarOpcaoCombo(driver, authenticationMap.CmbCountryAddress, authenticationMap.TxtAdditionalInformationAddress, usuario.Pais);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtAdditionalInformationAddress, usuario.InformacaoAdicional);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtHomePhoneAddress, usuario.TelefoneComDDD);
             SeleniumTools.EnviarTexto(driver, authenticationMap.TxtMobilePhoneAddress, usuario.CelularComDDD);
-            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtAddressFutureReference, usuario.EndercoAlternativo);
+            SeleniumTools.EnviarTexto(driver, authenticationMap.TxtAddressFutureReference, usuario.EnderecoAlternativo);
         }
 
         /// <summary>
@@ -163,9 +161,9 @@ namespace TesteAutomatizado.Testes
         /// <param name="aniversario"></param>
         private void PreencherAniversario(DateTime data)
         {
-            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbDayBirthCreate, data.Day.ToString());
-            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbMonthBirthCreate, data.Month.ToString());
-            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbYearBirthCreate, data.Year.ToString());
+            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbDayBirthCreate, authenticationMap.TxtCompanyName, data.Day.ToString());
+            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbMonthBirthCreate, authenticationMap.TxtCompanyName, data.Month.ToString());
+            SeleniumTools.SelecionarValorCombo(driver, authenticationMap.CmbYearBirthCreate, authenticationMap.TxtCompanyName, data.Year.ToString());
         }
 
         /// <summary>
@@ -177,6 +175,5 @@ namespace TesteAutomatizado.Testes
         {
             return text.Replace("\r", "").Replace("\n", "").Replace("×", "");
         }
-
     }
 }

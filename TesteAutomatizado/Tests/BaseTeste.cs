@@ -18,7 +18,7 @@ namespace TesteAutomatizado.Testes
             CriaRelatorioHelper.CriaRelatorio(this.GetType().Name);
 
             ChromeOptions opt = new ChromeOptions();
-           // opt.AddArgument("--headless");
+            opt.AddArgument("--headless");
             driver = new ChromeDriver(opt);
         }
 
