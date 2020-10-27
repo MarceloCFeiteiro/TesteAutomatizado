@@ -17,7 +17,7 @@ namespace TesteAutomatizado.Paginas
         }
 
         /// <summary>
-        /// Método responsável por maximixar a tela e navegar para a url especificada.
+        /// Método responsável por maximizar a tela e navegar para a url especificada.
         /// </summary>
         /// <param name="url">URL que será aberta</param>
         public void NavegaParaPagina(string url)

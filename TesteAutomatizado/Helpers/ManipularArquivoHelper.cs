@@ -21,7 +21,7 @@ namespace TesteAutomatizado.Helpers
         /// <param name="obj">Entidade a ser salva</param>
         public static void SalvarNoArquivoEmFormatoJson(User obj)
         {
-            string texto = ConversorJsonHelper.EntidadeParaJson(obj);
+            string texto = ConversorJsonHelper<User>.EntidadeParaJson(obj);
 
             File.WriteAllText(string.Concat(Caminho, NomeArquivo), texto);
         }
@@ -34,7 +34,7 @@ namespace TesteAutomatizado.Helpers
         {
             string texto = File.ReadAllText(string.Concat(Caminho, NomeArquivo));
 
-            return ConversorJsonHelper.JsonParaEntidade(texto);
+            return ConversorJsonHelper<User>.JsonParaEntidade(texto);
         }
     }
 }

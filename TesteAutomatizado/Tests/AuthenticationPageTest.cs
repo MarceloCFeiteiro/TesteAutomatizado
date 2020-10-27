@@ -1,12 +1,14 @@
-﻿using NUnit.Framework;
+﻿using Bogus;
+using NUnit.Framework;
 using System.Collections.Generic;
+using TesteAutomatizado.Data;
 using TesteAutomatizado.Helpers;
 using TesteAutomatizado.Pages;
 using TesteAutomatizado.Testes;
 
 namespace TesteAutomatizado.Tests
 {
-    public class AuthenticationTest : BaseTeste
+    internal class AuthenticationTest : BaseTeste
     {
         [Test]
         [Retry(2)]
@@ -130,10 +132,12 @@ namespace TesteAutomatizado.Tests
 
             Assert.AreEqual(login.RetornaMensagemCampoRequerido(), "*Required field", "A mensagem esta diferente do esperado.");
             var listaErrosPagina = login.RetornaListadeErros();
-            for (int i = 0; i < listaErros.Count; i++)
-            {
-                listaErros[i].Equals(listaErrosPagina[i]);
-            }
+            Assert.AreEqual(listaErros, listaErrosPagina);
+
+            //for (int i = 0; i < listaErros.Count; i++)
+            //{
+            //    listaErros[i].Equals(listaErrosPagina[i]);
+            //}
 
             #endregion Assert
         }
@@ -172,6 +176,17 @@ namespace TesteAutomatizado.Tests
             ManipularArquivoHelper.SalvarNoArquivoEmFormatoJson(usuario);
 
             #endregion Finalization
+        }
+
+
+
+        [Test]
+        public void Testando()
+        {
+            var p1 = new Pessoa { Nome = "Marcelo", Sobrenome = "Feiteiro" };
+            var p2 = new Pessoa { Nome = "Marcelo", Sobrenome = "Feiteiro" };
+
+            Assert.AreSame(p1, p2);
         }
     }
 }

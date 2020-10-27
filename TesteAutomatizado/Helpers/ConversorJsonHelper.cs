@@ -3,11 +3,11 @@ using TesteAutomatizado.Data;
 
 namespace TesteAutomatizado.Helpers
 {
-    public static class ConversorJsonHelper
+    public static class ConversorJsonHelper<T> where T  : class
     {
-        public static User JsonParaEntidade(string json)
+        public static T JsonParaEntidade(string json)
         {
-            var obj = JsonConvert.DeserializeObject<User>(json);
+            var obj = JsonConvert.DeserializeObject<T>(json);
 
             return obj;
         }
