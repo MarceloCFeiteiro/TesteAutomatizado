@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using TesteAutomatizado.Data;
 
 namespace TesteAutomatizado.Helpers
 {
-    public static class ConversorJsonHelper<T> where T  : class
+    public static class ConversorJsonHelper<T> where T : class
     {
         public static T JsonParaEntidade(string json)
         {

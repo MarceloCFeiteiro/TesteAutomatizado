@@ -1,5 +1,4 @@
-﻿using Bogus;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using TesteAutomatizado.Data;
 using TesteAutomatizado.Helpers;
@@ -177,8 +176,6 @@ namespace TesteAutomatizado.Tests
 
             #endregion Finalization
         }
-
-
 
         [Test]
         public void Testando()
