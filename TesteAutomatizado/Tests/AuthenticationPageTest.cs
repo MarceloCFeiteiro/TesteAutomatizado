@@ -43,7 +43,7 @@ namespace TesteAutomatizado.Tests
             #region Finalization
 
             index.ClickBtnSign_Out();
-
+         //   Depois apaga
             #endregion Finalization
         }
 
